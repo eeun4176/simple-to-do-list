@@ -30,6 +30,11 @@ addButton.addEventListener ('click', ()  =>{
     removeBtn.addEventListener('click', () => {
         task.innerHTML = "";
         removeBtn.remove();
+        completeBtn.remove();
+    });
+
+    completeBtn.addEventListener('click', () => {
+        task.style.textDecoration = "line-through";
     });
     
     document.querySelector("#taskInput").value = "";
