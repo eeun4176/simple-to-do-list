@@ -1,29 +1,32 @@
 let addButton = document.querySelector("#addBtn");
 let listContainer = document.querySelector("#list-container")
+let taskList = document.querySelector("#taskList");
+let taskInput = document.querySelector("#taskInput");
 
 addButton.addEventListener ('click', ()  =>{
-    let taskList = document.querySelector("#taskList");
-    let taskInput = document.querySelector("#taskInput");
     let task = document.createElement('li');
+    task.style.listStyleType = "none";
 
-    let button = document.createElement('button');
-    button.innerHTML = "Remove"
-    button.style.width = "70px";
-    button.style.height = "25px";
-    
+    let removeButton = document.createElement('button');
+    removeButton.innerHTML = "Remove"
+    removeButton.style.width = "70px";
+    removeButton.style.height = "25px";
+
     if(taskInput.value === ""){
-        button.disabled;
+        removeButton.disabled;
         alert("Enter task first!");
     }else{
         task.innerText = taskInput.value;
         taskList.append(task);
-        listContainer.append(button);
+        listContainer.append(removeButton);
     }
+    
+    removeButton.addEventListener('click', () => {
+        task.innerHTML = "";
+        removeButton.remove();
+    });
+    
+    document.querySelector("#taskInput").value = "";
+});
 
-    
 
-    
-    
-    
-    
-})
